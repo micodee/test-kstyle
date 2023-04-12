@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"project/database"
+	"project/routes"
 
 	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
@@ -25,6 +26,9 @@ func main() {
 
 	database.DatabaseInit()
 	database.RunMigration()
+
+	subrouter := e.Group("api/v1")
+	routes.MemberRoutes(subrouter)
 
 	port := "8000"
 	fmt.Println("server running on port", port)

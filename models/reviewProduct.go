@@ -5,5 +5,5 @@ type ReviewProduct struct {
 	MemberID   int        `json:"member_id"`
 	ProductID  int        `json:"product_id"`
 	DescReview string     `json:"desc_review" gorm:"type: text"`
-	LikeReview LikeReview `gorm:"foreignKey:ReviewProductID;OnUpdate:CASCADE,OnDelete:SET NULL;"`
+	LikeReview LikeReview `json:"-" gorm:"foreignKey:ReviewProductID;constraint:OnUpdate:CASCADE,OnDelete:SET NULL"`
 }
